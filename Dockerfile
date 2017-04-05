@@ -12,7 +12,8 @@ RUN \
   sed -n 's/^#Server = https/Server = https/p' /etc/pacman.d/mirrorlist > /tmp/mirrorlist && \
   rankmirrors -n 3 /tmp/mirrorlist | tee /etc/pacman.d/mirrorlist && \
   rm /tmp/mirrorlist && \
-  pacman -Syu --noconfirm --noprogressbar --quiet --force gzip awk && \
+  pacman -Syu --noconfirm --noprogressbar --quiet --force && \
+  pacman -Sy --noconfirm --noprogressbar --quiet awk diffutils file gettext grep gzip inetutils iputils libunistring licenses logrotate lzo popt procps-ng psmisc pth sysfsutils tar texinfo which && \
   paccache -r -k0 && \
   echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen && \
   locale-gen && \
